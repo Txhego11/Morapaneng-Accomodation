@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0" >
+        <title>Morapaneng Nursery</title>
+        <link rel="stylesheet" href="Meetings.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sometype+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C3MMQ1W98M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C3MMQ1W98M');
+</script>
+    </head>
+    <body>
+        <section class="header">
+            <nav>
+                <a href="home.html"><img src="Images/logo nursery.jpg"></a>
+                <div class="nav-links" id="navLinks">
+                    <ul>
+                        <li><a href="home.html"><i class="fa fa-home"></i></a></li>
+                        <li><a href="Rates.html">RATES AND TIMES</a></li>
+                        <li><a href="Entertainment.html">ENTERTAINMENT TIMES</a></li>
+                        <li><a href="News.html">WHAT'S ON</a></li>
+                        <li><a href="Bookings.html">BOOKINGS</a></li>
+                        <li><a href="Contact.html">ABOUT US</a></li>
+                    </ul>
+
+                </div>
+            </nav>
+        
+         <!---BOOKINGS--->
+         <div id="enterDetails">
+            <h1>BOOK YOUR SPACE</h1>
+            <h3>feel the comfort in your own space</h3>
+    
+            <h4>IDENTITY NUMBER (ID)</h4> 
+            <input id="enterID" type="number"> 
+            <h4>FULL NAMES</h4> 
+            <input id="enterName" type="text"> 
+    
+            <h4>PHONE</h4> 
+            <input id="enterPhone" type="number"> 
+            <h4>EMAIL</h4> 
+            <input id="enterEmail" type="email">
+    
+            <h4>Activity</h4> 
+            <input id="Activity" type="text"> 
+            
+            <h4>EVENT TYPE</h4> 
+                <input id="enterOrg" type="text">
+            <h4>PERSONS</h4> 
+                <input id="enterNum" type="number">
+            <h4>COMMENT</h4> 
+                <input id="message" type="text">
+            <h4>DATE</h4> 
+                <input id="enterDate" type="date">
+            <h4>PREFERED TIME</h4> 
+                <input id="enterTime" type="time">
+
+                <br><br>
+    
+            <button id="insert">BOOK</button>
+            <br><br>
+        </div>
+    
+        <div id="findDetails">
+            <h1>Find by ID</h1>
+            <h4>ID</h4>
+            <input id="findID" type="text"> <br><br>
+            <button id="find">FIND</button>
+            <h3 id="findName" type="number"></h3>
+            <h3 id="findActivity" type="text"></h3>
+            <h3 id="findDate" type="date"></h3> <br><br>
+        </div>
+        
+    
+  
+            <script type="module">
+                // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBahblI__J9AWdSsEP8HIatA5Y_4NbsCU4",
+    authDomain: "nursery-bb67f.firebaseapp.com",
+    databaseURL: "https://nursery-bb67f-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "nursery-bb67f",
+    storageBucket: "nursery-bb67f.appspot.com",
+    messagingSenderId: "867700550129",
+    appId: "1:867700550129:web:c434a84cc8d4ad99267c50",
+    measurementId: "G-XJCF4846ZJ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+    
+            import {getDatabase, ref, get, set, child, update, remove}
+            from  "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js" 
+            
+    
+            const db = getDatabase();
+    
+            var enterID = document.querySelector("#enterID");
+            var enterName = document.querySelector("#enterName");
+            var enterPhone = document.querySelector("#enterPhone");
+            var enterEmail = document.querySelector("#enterEmail");
+            var Activity = document.querySelector("#Activity");
+            var enterOrg = document.querySelector("#enterOrg");
+            var enterNum = document.querySelector("#enterNum");
+            var message = document.querySelector("#message");
+            var enterDate = document.querySelector("#enterDate");
+            var enterTime = document.querySelector("#enterTime");
+            var findID = document.querySelector("#findID");
+            var findName = document.querySelector("#findName");
+            var findActivity = document.querySelector("#findActivity");
+            var findDate = document.querySelector("#findDate");
+
+    
+            var insertBtn = document.querySelector("#insert");
+            var updateBtn = document.querySelector("#update");
+            var removeBtn = document.querySelector("#remove");
+            var findBtn = document.querySelector("#find");
+    
+            function InsertData() {
+                set(ref(db, "Booking/"+ enterName.value),{
+                    ID :enterID.value,
+                    Event_type: enterOrg.value,
+                    Persons: enterNum.value,
+                    message: message.value,
+                    Activity: Activity.value,
+                    Email : enterEmail.value,
+                    Date : enterDate.value,
+                    Phone : enterPhone.value,
+                    Time :enterTime.value
+                })
+                .then(()=>{
+                    alert("Booking added successfully");
+                })
+                .catch((error)=>{
+                    alert(error);
+                });
+            }
+    
+            function FindData() {
+                const dbref = ref(db);
+    
+                get(child(dbref, "Booking/" + findID.value))
+                .then((snapshot)=>{
+                    if(snapshot.exists()){
+                        findName.innerHTML = "ID: " + snapshot.val().ID;
+                        findActivity.innerHTML = "Activity: " + snapshot.val().Activity;
+                        findDate.innerHTML = "Date: " + snapshot.val().Date;
+
+                    } else {
+                        alert("No data found");
+                    }
+                })
+                .catch((error)=>{
+                    alert(error)
+                })
+                
+            }
+    
+            function UpdateData(){
+                update(ref(db, "Bookings/"+ enterID.value),{
+                    PHONE: enterPhone.value,
+                    EMAIL: enterEmail.value,
+                    BUSINESS: enterOrg.value,
+                    PERSONS: enterNum.value,
+                    COMMENT: message.value,
+                    DATE: enterDate.value,
+                    TIME: enterTime.value,
+                    Activity: Activity.value
+                })
+                .then(()=>{
+                    alert("Booking updated successfully");
+                })
+                .catch((error)=>{
+                    alert(error);
+                });
+            }
+    
+            function RemoveData(){
+                remove(ref(db, "Bookings/"+ enterID.value))
+                .then(()=>{
+                    alert("Booking deleted successfully");
+                })
+                .catch((error)=>{
+                    alert(error);
+                });
+            }
+    
+            insertBtn.addEventListener('click', InsertData);
+            updateBtn.addEventListener('click', UpdateData);
+            removeBtn.addEventListener('click', RemoveData);
+            findBtn.addEventListener('click', FindData);
+    
+          </script>
+        </section>
+        <!---FOOTER-->
+        <section class="footer">
+
+            <h4>ABOUT US</h4>
+            <p>Providing good services to our people ensures a great experience<br>
+         We love putting a smile on our brothers and sisters faces let treat one another with the same love!</p>            <div class="icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-youtube-play"></i>
+                <i class="fa fa-whatsapp"></i>
+
+            </div>
+            <p>Made with <i class="fa fa-heart-o"></i>by Dibate Thobejane</p>
+        </section>
+
+        <script>
+            var navLinks= document.getElementById("navLinks");
+            function showMenu(){
+                navLinks.style.right="0";
+            }
+            function hideMenu(){
+                navLinks.style.right="-200px";
+            }
+        </script>
+    </body>
+</html>
