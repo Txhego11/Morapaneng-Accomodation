@@ -338,6 +338,7 @@ h3{
 .footer{
     width: 100%;
     text-align: center;
+    background-image: linear-gradient(hwb(135 40% 59% / 0.562),hsla(150, 2%, 40%, 0.702));
     padding: 30px 0;
 }
 .footer h4{
