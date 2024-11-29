@@ -50,7 +50,10 @@
             <!-- Student Information -->
             <div class="mb-3">
                 <label for="studentNumber" class="form-label">Student Number</label>
-                <input type="text" class="form-control" id="studentNumber" required>
+                <input type="number" class="form-control" pattern="[0-9]{9}" maxlength="9" id="studentNumber" required>
+                <div class="invalid-feedback" id="studentNumberError">
+                                        Please enter a valid 9-digit student number.
+                                    </div>
             </div>
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name</label>
@@ -62,7 +65,10 @@
             </div>
             <div class="mb-3">
                 <label for="idNumber" class="form-label">ID Number</label>
-                <input type="text" class="form-control" id="idNumber" required>
+                <input type="text" class="form-control" id="idNumber" pattern="[0-9]{13}" maxlength="13" required>
+                <div class="invalid-feedback" id="idNumberError">
+                                        Please enter a valid 13-digit ID number.
+                                    </div>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -70,7 +76,10 @@
             </div>
             <div class="mb-3">
                 <label for="phoneNumber" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="phoneNumber" required>
+                <input type="text" class="form-control" id="phoneNumber" pattern="[0-9]{10}" maxlength="10" required>
+                <div class="invalid-feedback" id="phoneNumberError">
+                                        Please enter a valid 10-digit phone number.
+                                    </div>
             </div>
             <div class="mb-3">
                 <label for="residentialAddress" class="form-label">Residential Address</label>
@@ -109,11 +118,10 @@
             </div>
             <div class="mb-3">
                 <label for="kinPhoneNumber" class="form-label">Next of Kin Phone Number</label>
-                <input type="text" class="form-control" id="kinPhoneNumber" required>
-            </div>
-            <div class="mb-3">
-                <label for="kinIdNumber" class="form-label">Next of Kin ID Number</label>
-                <input type="text" class="form-control" id="kinIdNumber" required>
+                <input type="text" class="form-control" id="kinPhoneNumber" pattern="[0-9]{10}" maxlength="10" required>
+                <div class="invalid-feedback" id="kinPhoneNumberError">
+                                        Please enter a valid 10-digit phone number.
+                                    </div>
             </div>
 
             <!-- Upload Proof -->
