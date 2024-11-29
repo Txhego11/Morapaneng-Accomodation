@@ -50,8 +50,7 @@
             <!-- Student Information -->
             <div class="mb-3">
                 <label for="studentNumber" class="form-label">Student Number</label>
-                <input type="number" class="form-control" pattern="[0-9]{9}" maxlength="9" id="studentNumber" required>
-                
+                <input type="text" class="form-control" id="studentNumber" required>
             </div>
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name</label>
@@ -63,8 +62,7 @@
             </div>
             <div class="mb-3">
                 <label for="idNumber" class="form-label">ID Number</label>
-                <input type="text" class="form-control" id="idNumber" pattern="[0-9]{13}" maxlength="13" required>
-                
+                <input type="text" class="form-control" id="idNumber" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -72,8 +70,7 @@
             </div>
             <div class="mb-3">
                 <label for="phoneNumber" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="phoneNumber" pattern="[0-9]{10}" maxlength="10" required>
-                
+                <input type="text" class="form-control" id="phoneNumber" required>
             </div>
             <div class="mb-3">
                 <label for="residentialAddress" class="form-label">Residential Address</label>
@@ -112,8 +109,17 @@
             </div>
             <div class="mb-3">
                 <label for="kinPhoneNumber" class="form-label">Next of Kin Phone Number</label>
-                <input type="text" class="form-control" id="kinPhoneNumber" pattern="[0-9]{10}" maxlength="10" required>
-                
+                <input type="text" class="form-control" id="kinPhoneNumber" required>
+            </div>
+            <div class="mb-3">
+                <label for="kinIdNumber" class="form-label">Next of Kin ID Number</label>
+                <input type="text" class="form-control" id="kinIdNumber" required>
+            </div>
+
+            <!-- Upload Proof -->
+            <div class="mb-3">
+                <label for="registrationProof" class="form-label">Upload Proof of Registration</label>
+                <input type="file" class="form-control" id="registrationProof">
             </div>
 
             <!-- Submit Button -->
@@ -145,11 +151,11 @@
 
             try {
                 const studentData = {
-                    studentNumber: document.getElementById("studentNumber").value,
-                    firstName: document.getElementById("firstName").value,
-                    surname: document.getElementById("surname").value,
-                    email: document.getElementById("email").value,
-                    phoneNumber: document.getElementById('phoneNumber').value,
+                studentNumber: document.getElementById("studentNumber").value,
+                firstName: document.getElementById("firstName").value,
+                surname: document.getElementById("surname").value,
+                email: document.getElementById("email").value,
+                phoneNumber: document.getElementById('phoneNumber').value,
                 residentialAddress: document.getElementById('residentialAddress').value,
                 sourceOfFunding: document.getElementById('sourceOfFunding').value,
                 yearOfStudy: document.getElementById('yearOfStudy').value,
